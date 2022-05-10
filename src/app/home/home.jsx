@@ -8,20 +8,30 @@ const Home = () => {
     console.log(window.location)
     let userIdShare = window.location.href;
     console.log(userIdShare)
-    useEffect(() => {
-        setTimeout(() => {
-            setData({
-                description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
-                image: Image,
-                imageAlt: "home Image",
-                title: "home image"
+    useEffect(async () => {
+        // setTimeout(() => {
+        //     setData({
+        //         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+        //         image: Image,
+        //         imageAlt: "home Image",
+        //         title: "home image"
+        //     })
+        // }, 1000)
+
+        fetch("https://ctapi.shadhinlab.xyz/dev/course/courses/0e22a607ec59598611cd64b2e3738a36aba833f8/public?status=published&check_enrolled=false")
+            .then((res) => res.json())
+            .then((json) => {
+                console.log(json.data)
+                setData(json.data);
             })
-        }, 1000)
+
     }, []);
+
+    console.log(data)
     return (
         <div className="container">
-            <MetaDecorator description={data.description} imageUrl={data.image} imageAlt={data.imageAlt}
-                           title={data.title}/>
+            <MetaDecorator description={data.course_description_summery} imageUrl={data.thumbnail} imageAlt={data.course_name}
+                           title={data.course_name}/>
             {/*<MetaDecorator description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" imageUrl={Image} imageAlt="home image" title="Home Page" />*/}
             <h1 className="text-center">Lorem Ipsum</h1>
             <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "There
