@@ -1,15 +1,24 @@
-import React from 'react';
-
+import React, {useEffect, useState} from 'react';
 import Image from "./static/image/image.jpg"
 import MetaDecorator from "../../components/MetaDecorator";
 import ContentShare from "../../components/content-share/ContentShare";
 const Home = () => {
+    const [data, setData] = useState({})
     console.log(window.location)
     let userIdShare = window.location.href;
     console.log(userIdShare)
+    useEffect(() =>{
+        setData({
+            description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+            image: Image,
+            imageAlt:"home Image",
+            title:"home image"
+        })
+    },[]);
     return (
         <div className="container">
-            <MetaDecorator description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" imageUrl={Image} imageAlt="home image" title="Home Page" />
+            <MetaDecorator description={data.description} imageUrl={data.image} imageAlt={data.imageAlt} title={data.title} />
+            {/*<MetaDecorator description="Lorem Ipsum is simply dummy text of the printing and typesetting industry" imageUrl={Image} imageAlt="home image" title="Home Page" />*/}
             <h1 className="text-center">Lorem Ipsum</h1>
             <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "There
                 is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
