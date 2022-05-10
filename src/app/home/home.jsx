@@ -37,7 +37,7 @@ const Home = () => {
             <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "There
                 is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
             </p>
-            <img className="img-fluid" style={{height: "400px!important"}} src={Image} alt=""/>
+            <img className="img-fluid" style={{height: "400px!important"}} src={data.thumbnail} alt=""/>
 
             <div className="row">
                 <div className="col-md-6">
